@@ -1,0 +1,121 @@
+
+/*
+ * VARIABLES
+ **/
+
+$GRID_COLUMNS: 12;
+
+$GRID_BREAKPOINTS: (
+  xs: null,
+  sm: 554px,
+  md: 992px,
+  lg: 1200px
+);
+
+$GRID_GUTTERS: ();
+
+
+/*
+ * CONVENIENCE FUNCTIONS
+ **/
+
+@function breakpoint($level) {
+  @return map-get($GRID_BREAKPOINTS, $level);
+}
+
+@function breakpoint-suffix($level) {
+  @return if(breakpoint($level) == null, "", "-#{$level}");
+}
+
+// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+// Makes the @content apply to the given breakpoint and wider.
+@mixin media-min($breakpointName, $breakpoints: $GRID_BREAKPOINTS) {
+  $breakpoint: breakpoint($breakpointName);
+  @if $breakpoint {
+    @media (min-width: $breakpoint) {
+      @content;
+    };
+  } @else {
+    @content;
+  }
+}
+
+
+/*
+ * UTILITY CLASSES
+ **/
+ 
+// Containers that max out at a certain breakpoint
+@mixin make-container-max-widths($breakpoints: $GRID_BREAKPOINTS) {
+
+  %container {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  @each $breakpointKey, $breakpointValue in $breakpoints {
+    @if $breakpointValue != null {
+    
+      .container-max-#{$breakpointKey} {
+        @extend %container;
+        max-width: $breakpointValue;
+      } 
+
+    } 
+  }
+}
+@include make-container-max-widths();
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+%col {
+  position: relative;
+  // Prevent columns from becoming too narrow when at smaller grid tiers by
+  // always setting `width: 100%;`. This works because we use `flex` values
+  // later on to override this initial width.
+  width: 100%;
+  min-height: 1px; // Prevent collapsing
+
+  flex: 1 1 0%;
+  max-width: 100%;
+}
+
+@mixin make-col($numbColumns: 1, $totalColumns: $GRID_COLUMNS) {
+  $width: 100% / $totalColumns * $numbColumns; 
+
+  flex: 0 0 $width;
+  // width: percentage($size / $columns);
+  // Add a `max-width` to ensure content within each column does not blow out
+  // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
+  // do not appear to require this.
+  max-width: $width;
+}
+
+.col {
+  @extend %col;
+}
+
+@mixin make-cols($gridColumns: $GRID_COLUMNS, $breakpoints: $GRID_BREAKPOINTS) {
+  @each $breakpointKey, $breakpointValue in $breakpoints {
+
+    @include media-min($breakpointKey) {
+      @for $i from 1 through $gridColumns { 
+        .col-#{$breakpointKey}-#{$i} {
+          @include make-col($i);
+        };
+      };
+    };
+
+  };
+};
+@include make-cols();
+
+
+.align-top    { align-items: flex-start; }
+.align-center { align-items: center; }
+.align-bottom { align-items: flex-end; }
+

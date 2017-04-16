@@ -1,0 +1,143 @@
+
+/*
+ * VARIABLES
+ **/
+
+// Unit on which all spacing is based
+$SPACING_BASE: 4px;
+
+// Modular spacing scale
+$SPACING_LEVELS: (0, 0.5, 1, 2, 3, 4, 6, 8, 12, 16);
+$SPACING_MAP: ();
+
+
+/*
+ * INIT
+ **/
+
+@function make-spacing-map($map: $SPACING_MAP, $levels: $SPACING_LEVELS) {
+  @for $i from 1 through length($levels) {
+    $keyName: nth($levels, $i);
+    @if $keyName == 0.5 {
+      $keyName: half;
+    }
+
+    $tempMap: (
+      $keyName: nth($levels, $i) * $SPACING_BASE,
+    );
+
+    // This is similar to pushing values onto the stack
+    $map: map-merge($map, $tempMap);
+  }
+
+  @return $map;
+}
+
+$SPACING_MAP: make-spacing-map($map: $SPACING_MAP, $levels: $SPACING_LEVELS);
+
+
+/*
+ * CONVENIENCE FUNCTIONS
+ **/
+
+@function spacing($level) {
+  @return $SPACING_BASE * $level;
+}
+
+@function spacing-level($level, $modifier: 0) {
+  $spacingKeys: map-keys($SPACING_MAP);
+  $spacingPosition: index($spacingKeys, $level) + $modifier;
+  
+  // Make sure level exists in array
+  @if $spacingPosition > 0 and $spacingPosition <= length($spacingKeys) {
+    $spacingKey: nth($spacingKeys, $spacingPosition);
+    @return map-get($SPACING_MAP, $spacingKey);
+  }
+  // Otherwise return null
+  @else { @return null; };  
+}
+
+
+/*
+ * UTILITY CLASSES
+ **/
+
+@mixin make-spacing($breakpoints: $GRID_BREAKPOINTS) {
+  @each $breakpointKey, $breakpointValue in $breakpoints {
+    @include media-min($breakpointKey) {
+      @each $levelKey, $levelValue in $SPACING_MAP {
+
+        $breakpointSuffix: breakpoint-suffix($breakpointKey);
+        $squishedValue: spacing-level($levelKey, $modifier: -1);
+        $stretchedValue: spacing-level($levelKey, $modifier: 1);
+
+        // Make square insets
+        .inset#{$breakpointSuffix}-#{$levelKey} {        
+          padding: $levelValue;
+        };
+
+        // Make squish insets
+        .inset-squish#{$breakpointSuffix}-#{$levelKey} {        
+          padding: $squishedValue $levelValue;
+        };
+
+        // Make stretch insets
+        .inset-stretch#{$breakpointSuffix}-#{$levelKey} {        
+          padding: $stretchedValue $levelValue;
+        };
+
+        // Make stack spacing
+        .stack#{$breakpointSuffix}-#{$levelKey} {        
+          margin-bottom: $levelValue;
+        };
+
+        // Make inline spacing
+        .inline#{$breakpointSuffix}-#{$levelKey} {        
+          margin-right: $levelValue;
+        };
+
+        // Make bustouts
+        .bustout#{$breakpointSuffix}-#{$levelKey} {        
+          padding-left: -$levelValue;
+          padding-right: -$levelValue;
+        };
+
+        // Make gutters
+        .gutter#{$breakpointSuffix}-#{$levelKey} {        
+          margin-right: -$levelValue;
+          // margin-bottom: -$value;
+          
+          &:before {
+            content: "";
+            display: block;
+          }
+
+          & > [class*=col] {
+            padding-right: $levelValue; 
+            // margin-bottom: $value;
+          }
+        };
+
+      };
+    };
+  };
+};
+@include make-spacing();
+
+
+.section {
+  padding-right: spacing-level(4);
+  padding-left:  spacing-level(4);
+
+  @media (min-width: breakpoint(md)) {
+    padding-right: spacing-level(8);
+    padding-left:  spacing-level(8);
+  } 
+}
+
+
+
+
+
+
+
