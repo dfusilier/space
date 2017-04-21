@@ -3,6 +3,7 @@
 	box-sizing: border-box;
 }
 
+@import "breakpoints"; 
 @import "grid";
 @import "spacing"; 
 
@@ -24,10 +25,7 @@ body {
 	color: $color-text-primary;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	margin: 0;
-	padding: spacing-level(8) 0;
-	@media (min-width: breakpoint(md)) {
-		padding: spacing-level(8) 0;
-	}
+	padding: 0;
 }
 
 a {

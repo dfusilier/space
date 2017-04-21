@@ -1,0 +1,38 @@
+
+/*
+ * VARIABLES
+ **/
+
+$BREAKPOINTS: (
+  xs: null,
+  sm: 576px,
+  md: 768px,
+  ld: 992px,
+  xl: 1200px
+);
+
+
+/*
+ * CONVENIENCE FUNCTIONS
+ **/
+
+@function breakpoint($level) {
+  @return map-get($BREAKPOINTS, $level);
+}
+
+@function breakpoint-suffix($level) {
+  @return if(breakpoint($level) == null, "", "-#{$level}");
+}
+
+// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+// Makes the @content apply to the given breakpoint and wider.
+@mixin media-min($breakpointName, $breakpoints: $BREAKPOINTS) {
+  $breakpoint: breakpoint($breakpointName);
+  @if $breakpoint {
+    @media (min-width: $breakpoint) {
+      @content;
+    };
+  } @else {
+    @content;
+  }
+}

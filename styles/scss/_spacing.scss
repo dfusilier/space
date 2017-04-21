@@ -62,7 +62,7 @@ $SPACING_MAP: make-spacing-map($map: $SPACING_MAP, $levels: $SPACING_LEVELS);
  * UTILITY CLASSES
  **/
 
-@mixin make-spacing($breakpoints: $GRID_BREAKPOINTS) {
+@mixin make-spacing($breakpoints: $BREAKPOINTS) {
   @each $breakpointKey, $breakpointValue in $breakpoints {
     @include media-min($breakpointKey) {
       @each $levelKey, $levelValue in $SPACING_MAP {
@@ -98,23 +98,15 @@ $SPACING_MAP: make-spacing-map($map: $SPACING_MAP, $levels: $SPACING_LEVELS);
 
         // Make bustouts
         .bustout#{$breakpointSuffix}-#{$levelKey} {        
-          padding-left: -$levelValue;
-          padding-right: -$levelValue;
+          margin-left: -$levelValue;
+          margin-right: -$levelValue;
         };
 
         // Make gutters
         .gutter#{$breakpointSuffix}-#{$levelKey} {        
-          margin-right: -$levelValue;
-          // margin-bottom: -$value;
-          
-          &:before {
-            content: "";
-            display: block;
-          }
-
+          margin-left: -$levelValue;
           & > [class*=col] {
-            padding-right: $levelValue; 
-            // margin-bottom: $value;
+            padding-left: $levelValue;
           }
         };
 
@@ -124,14 +116,24 @@ $SPACING_MAP: make-spacing-map($map: $SPACING_MAP, $levels: $SPACING_LEVELS);
 };
 @include make-spacing();
 
-
 .section {
+  position: relative;
   padding-right: spacing-level(4);
   padding-left:  spacing-level(4);
 
   @media (min-width: breakpoint(md)) {
     padding-right: spacing-level(8);
     padding-left:  spacing-level(8);
+  } 
+}
+
+.bustout-section {
+  margin-right: -1 * spacing-level(4);
+  margin-left:  -1 * spacing-level(4);
+
+  @media (min-width: breakpoint(md)) {
+    margin-right: -1 * spacing-level(8);
+    margin-left:  -1 * spacing-level(8);
   } 
 }
 

@@ -5,63 +5,36 @@
 
 $GRID_COLUMNS: 12;
 
-$GRID_BREAKPOINTS: (
-  xs: null,
-  sm: 554px,
-  md: 992px,
-  lg: 1200px
+$GRID_CONTAINERS: (
+  xs: 360px,
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
 );
-
-$GRID_GUTTERS: ();
-
-
-/*
- * CONVENIENCE FUNCTIONS
- **/
-
-@function breakpoint($level) {
-  @return map-get($GRID_BREAKPOINTS, $level);
-}
-
-@function breakpoint-suffix($level) {
-  @return if(breakpoint($level) == null, "", "-#{$level}");
-}
-
-// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
-// Makes the @content apply to the given breakpoint and wider.
-@mixin media-min($breakpointName, $breakpoints: $GRID_BREAKPOINTS) {
-  $breakpoint: breakpoint($breakpointName);
-  @if $breakpoint {
-    @media (min-width: $breakpoint) {
-      @content;
-    };
-  } @else {
-    @content;
-  }
-}
 
 
 /*
  * UTILITY CLASSES
  **/
- 
+
+%container {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+
+  // Necessary to stop horizontal scrolling if using 
+  // gutters with padding on right.
+  // overflow: hidden;
+}
+
 // Containers that max out at a certain breakpoint
-@mixin make-container-max-widths($breakpoints: $GRID_BREAKPOINTS) {
+@mixin make-container-max-widths($containers: $GRID_CONTAINERS) {
+  @each $breakpointKey, $maxValue in $containers {
 
-  %container {
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  @each $breakpointKey, $breakpointValue in $breakpoints {
-    @if $breakpointValue != null {
-    
-      .container-max-#{$breakpointKey} {
-        @extend %container;
-        max-width: $breakpointValue;
-      } 
-
+    .container-max-#{$breakpointKey} {
+      @extend %container;
+      max-width: $maxValue;
     } 
   }
 }
@@ -72,44 +45,52 @@ $GRID_GUTTERS: ();
   flex-wrap: wrap;
 }
 
-%col {
-  position: relative;
-  // Prevent columns from becoming too narrow when at smaller grid tiers by
-  // always setting `width: 100%;`. This works because we use `flex` values
-  // later on to override this initial width.
-  width: 100%;
-  min-height: 1px; // Prevent collapsing
-
-  flex: 1 1 0%;
-  max-width: 100%;
-}
-
 @mixin make-col($numbColumns: 1, $totalColumns: $GRID_COLUMNS) {
   $width: 100% / $totalColumns * $numbColumns; 
-
   flex: 0 0 $width;
-  // width: percentage($size / $columns);
   // Add a `max-width` to ensure content within each column does not blow out
   // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
   // do not appear to require this.
   max-width: $width;
 }
 
-.col {
-  @extend %col;
+%col {
+  position: relative;
+  // Prevent columns from becoming too narrow when at smaller grid tiers by
+  // always setting `width: 100%;`. This works because we use `flex` values
+  // later on to override this initial width.
+  min-height: 1px; // Prevent collapsing
+  width: 100%;
 }
 
-@mixin make-cols($gridColumns: $GRID_COLUMNS, $breakpoints: $GRID_BREAKPOINTS) {
-  @each $breakpointKey, $breakpointValue in $breakpoints {
+.col {
+  @extend %col;
+  flex: 1 1 0%;
+  max-width: 100%;
+}
 
-    @include media-min($breakpointKey) {
-      @for $i from 1 through $gridColumns { 
-        .col-#{$breakpointKey}-#{$i} {
-          @include make-col($i);
-        };
+@mixin make-cols($gridColumns: $GRID_COLUMNS, $breakpoints: $BREAKPOINTS) {
+  @each $breakpointKey, $breakpointValue in $breakpoints {
+    $breakpointSuffix: breakpoint-suffix($breakpointKey);
+
+    // Extend all columns from base class. @extend saves
+    // ~2kb. Must be done in separate loop because extend 
+    // can only be used outside media queries.
+    @for $i from 1 through $gridColumns { 
+      .col#{$breakpointSuffix}-#{$i} {
+        @extend %col;
       };
     };
 
+    @include media-min($breakpointKey) {
+      @for $i from 1 through $gridColumns { 
+
+        .col#{$breakpointSuffix}-#{$i} {
+          @include make-col($i);
+        };
+
+      };
+    };
   };
 };
 @include make-cols();
