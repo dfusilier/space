@@ -48,10 +48,10 @@ Use inline spacing to add horizontal space between siblings. Adds margin to the 
 
 Use gutter spacing to add gutters between columns. When used on rows, adds padding to either side of each col and negative margins to either side of the row.
 
-### Mixin
+#### Mixin
 `@include gutter($level)`
 
-### Utility classes
+#### Utility classes
 `.gutter-[level]` or `.gutter-[level]-[breakpoint]`
 
 
@@ -60,18 +60,18 @@ Use gutter spacing to add gutters between columns. When used on rows, adds paddi
 
 Use bustout spacing to enable children to "bustout" of their parent. Adds negative margin to the left and right of the element.
 
-### Mixin
+#### Mixin
 `@include bustout($level)`
 
-### Utility classes
+#### Utility classes
 `.bustout-[level]` or `.bustout-[level]-[breakpoint]`
 
 
 
-### Mixin
+#### Mixin
 `@include bustout($level)`
 
-### Utility classes
+#### Utility classes
 `.bustout-[level]` or `.bustout-[level]-[breakpoint]`
 
 
