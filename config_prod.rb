@@ -5,14 +5,14 @@ require 'compass/import-once/activate'
 
 # Set this to the root of your project when deployed:
 http_path = "/"
-css_dir = "styles/debug"
+css_dir = "styles"
 sass_dir = "styles/scss"
 images_dir = "images"
 javascripts_dir = "javascripts"
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed
-output_style = :expanded
+output_style = :compressed
 
 # To enable relative paths to assets via compass helper functions. Uncomment:
 # relative_assets = true
@@ -26,8 +26,3 @@ output_style = :expanded
 # preferred_syntax = :sass
 # and then run:
 # sass-convert -R --from scss --to sass sass scss && rm -rf sass && mv scss sass
-
-# This is where the magic happens, nothing too fancy though...
-on_stylesheet_saved do
-  `compass compile -c config_prod.rb --force`
-end

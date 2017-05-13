@@ -1,21 +1,11 @@
 
 /*
- * VARIABLES
- **/
-
-// Unit on which all spacing is based
-$SPACING_BASE: 4px;
-
-// Modular spacing scale
-$SPACING_LEVELS: (0, 0.5, 1, 2, 3, 4, 6, 8, 12, 16);
-$SPACING_MAP: ();
-
-
-/*
  * INIT
  **/
 
-@function make-spacing-map($map: $SPACING_MAP, $levels: $SPACING_LEVELS) {
+@function make-spacing-map($levels: $SPACING_LEVELS) {
+  $map: (); 
+
   @for $i from 1 through length($levels) {
     $keyName: nth($levels, $i);
     @if $keyName == 0.5 {
@@ -33,7 +23,7 @@ $SPACING_MAP: ();
   @return $map;
 }
 
-$SPACING_MAP: make-spacing-map($map: $SPACING_MAP, $levels: $SPACING_LEVELS);
+$SPACING_MAP: make-spacing-map($levels: $SPACING_LEVELS);
 
 
 /*
@@ -59,87 +49,126 @@ $SPACING_MAP: make-spacing-map($map: $SPACING_MAP, $levels: $SPACING_LEVELS);
 
 
 /*
+ * MIXINS
+ **/
+
+@mixin inset($level, $isImportant: false) {
+  padding: spacing-level($level) if($isImportant, !important, null);
+}
+
+@mixin inset-squish($level, $isImportant: false) {
+  $levelValue:      spacing-level($level);
+  $squishedValue:   spacing-level($level, $modifier: -1);
+
+  padding: $squishedValue $levelValue if($isImportant, !important, null);
+}
+
+@mixin inset-stretch($level, $isImportant: false) {
+  $levelValue:      spacing-level($level); 
+  $stretchedValue:  spacing-level($level, $modifier: 1);
+
+  padding: $stretchedValue $levelValue if($isImportant, !important, null);
+}
+
+@mixin stack($level, $isImportant: false) {
+  margin-bottom: spacing-level($level) if($isImportant, !important, null);
+}
+
+@mixin inline($level, $isImportant: false) {
+  margin-right: spacing-level($level) if($isImportant, !important, null);
+}
+
+@mixin bustout($level, $isImportant: false) {
+  margin-left:  -1 * spacing-level($level) if($isImportant, !important, null);
+  margin-right: -1 * spacing-level($level) if($isImportant, !important, null);
+}
+
+@mixin gutter($level, $isImportant: false) {
+  $levelValue: spacing-level($level);
+
+  margin-left: -$levelValue if($isImportant, !important, null);
+  & > [class*=col] {
+    padding-left: $levelValue if($isImportant, !important, null);
+  }
+}
+
+
+/*
  * UTILITY CLASSES
  **/
 
-@mixin make-spacing($breakpoints: $BREAKPOINTS) {
+// Utilities use !important in order to ensure styles 
+// override those defined in a component's CSS.
+
+@mixin make-spacing-utilities($breakpoints: $BREAKPOINTS) {
   @each $breakpointKey, $breakpointValue in $breakpoints {
     @include media-min($breakpointKey) {
       @each $levelKey, $levelValue in $SPACING_MAP {
 
         $breakpointSuffix: breakpoint-suffix($breakpointKey);
-        $squishedValue: spacing-level($levelKey, $modifier: -1);
-        $stretchedValue: spacing-level($levelKey, $modifier: 1);
 
         // Make square insets
-        .inset#{$breakpointSuffix}-#{$levelKey} {        
-          padding: $levelValue;
+        .inset-#{$levelKey}#{$breakpointSuffix} {        
+          @include inset($levelKey, $isImportant: true);
         };
 
         // Make squish insets
-        .inset-squish#{$breakpointSuffix}-#{$levelKey} {        
-          padding: $squishedValue $levelValue;
+        .inset-squish-#{$levelKey}#{$breakpointSuffix} {        
+          @include inset-squish($levelKey, $isImportant: true);
         };
 
         // Make stretch insets
-        .inset-stretch#{$breakpointSuffix}-#{$levelKey} {        
-          padding: $stretchedValue $levelValue;
+        .inset-stretch-#{$levelKey}#{$breakpointSuffix} {        
+          @include inset-stretch($levelKey, $isImportant: true); 
         };
 
-        // Make stack spacing
-        .stack#{$breakpointSuffix}-#{$levelKey} {        
-          margin-bottom: $levelValue;
+        // Make stack spacing 
+        .stack-#{$levelKey}#{$breakpointSuffix} {        
+          @include stack($levelKey, $isImportant: true);
         };
 
         // Make inline spacing
-        .inline#{$breakpointSuffix}-#{$levelKey} {        
-          margin-right: $levelValue;
+        .inline-#{$levelKey}#{$breakpointSuffix} {        
+          @include inline($levelKey, $isImportant: true);
         };
 
         // Make bustouts
-        .bustout#{$breakpointSuffix}-#{$levelKey} {        
-          margin-left: -$levelValue;
-          margin-right: -$levelValue;
+        .bustout-#{$levelKey}#{$breakpointSuffix} {        
+          @include bustout($levelKey, $isImportant: true);
         };
 
         // Make gutters
-        .gutter#{$breakpointSuffix}-#{$levelKey} {        
-          margin-left: -$levelValue;
-          & > [class*=col] {
-            padding-left: $levelValue;
-          }
+        .gutter-#{$levelKey}#{$breakpointSuffix} {        
+          @include gutter($levelKey, $isImportant: true);
         };
 
       };
     };
   };
-};
-@include make-spacing();
+}; 
+
+@include make-spacing-utilities();
 
 .section {
   position: relative;
-  padding-right: spacing-level(4);
-  padding-left:  spacing-level(4);
+  padding-right: spacing-level(4) !important;
+  padding-left:  spacing-level(4) !important;
 
-  @media (min-width: breakpoint(md)) {
-    padding-right: spacing-level(8);
-    padding-left:  spacing-level(8);
+  @include media-min(md) {
+    padding-right: spacing-level(8) !important;
+    padding-left:  spacing-level(8) !important;
   } 
 }
 
 .bustout-section {
-  margin-right: -1 * spacing-level(4);
-  margin-left:  -1 * spacing-level(4);
+  margin-right: -1 * spacing-level(4) !important;
+  margin-left:  -1 * spacing-level(4) !important;
 
-  @media (min-width: breakpoint(md)) {
-    margin-right: -1 * spacing-level(8);
-    margin-left:  -1 * spacing-level(8);
+  @include media-min(md) {
+    margin-right: -1 * spacing-level(8) !important;
+    margin-left:  -1 * spacing-level(8) !important;
   } 
 }
-
-
-
-
 
 
 
