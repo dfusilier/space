@@ -18,7 +18,7 @@ $SPACING_LEVELS: (0, 0.5, 1, 2, 3, 4, 6, 8, 12, 16) !default;
 Use insets to add space between a parent and its children. Adds padding on all four sides.
 
 #### Mixin
-`@include inset($level)`
+`@include inset($level);`
 
 #### Utility classes
 `.inset-[level]` or `.inset-[level]-[breakpoint]`
@@ -34,7 +34,7 @@ Apply `.section` along with an `.inset` to the major regions of your layout to e
 Use stack spacing to add vertical space between siblings. Adds margin to the bottom of the element.
 
 #### Mixin
-`@include stack($level)`
+`@include stack($level);`
 
 #### Utility classes
 `.stack-[level]` or `.stack-[level]-[breakpoint]`
@@ -46,7 +46,7 @@ Use stack spacing to add vertical space between siblings. Adds margin to the bot
 Use inline spacing to add horizontal space between siblings. Adds margin to the right of the element.
 
 #### Mixin
-`@include inline($level)`
+`@include inline($level);`
 
 #### Utility classes
 `.inline-[level]` or `.inline-[level]-[breakpoint]`
@@ -58,7 +58,7 @@ Use inline spacing to add horizontal space between siblings. Adds margin to the 
 Use gutter spacing to add gutters between columns. When used on rows, adds padding to either side of each col and negative margins to either side of the row.
 
 #### Mixin
-`@include gutter($level)`
+`@include gutter($level);`
 
 #### Utility classes
 `.gutter-[level]` or `.gutter-[level]-[breakpoint]`
@@ -70,15 +70,7 @@ Use gutter spacing to add gutters between columns. When used on rows, adds paddi
 Use bustout spacing to enable children to "bustout" of their parent. Adds negative margin to the left and right of the element.
 
 #### Mixin
-`@include bustout($level)`
-
-#### Utility classes
-`.bustout-[level]` or `.bustout-[level]-[breakpoint]`
-
-
-
-#### Mixin
-`@include bustout($level)`
+`@include bustout($level);`
 
 #### Utility classes
 `.bustout-[level]` or `.bustout-[level]-[breakpoint]`
