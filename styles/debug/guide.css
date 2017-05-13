@@ -2490,3 +2490,56 @@
     margin-left: -32px !important;
   }
 }
+
+/* line 8, ../scss/guide.scss */
+body {
+  color: rgba(0, 0, 0, 0.87);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  margin: 0;
+  padding: 0;
+}
+
+/* line 15, ../scss/guide.scss */
+a {
+  color: #007aff;
+}
+
+/* line 19, ../scss/guide.scss */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 16px;
+}
+
+/* line 25, ../scss/guide.scss */
+h1 {
+  margin-bottom: 24px;
+  font-size: 200%;
+}
+
+/* line 31, ../scss/guide.scss */
+.tint, .example, .example-inner {
+  background: rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* line 36, ../scss/guide.scss */
+.example, .example-inner {
+  border-radius: 4px;
+}
+
+/* line 40, ../scss/guide.scss */
+.example {
+  margin-bottom: 8px;
+}
+
+/* line 44, ../scss/guide.scss */
+.example-inner {
+  padding: 8px;
+  text-align: center;
+}
+
+/* line 49, ../scss/guide.scss */
+.caption {
+  font-size: 75%;
+}
