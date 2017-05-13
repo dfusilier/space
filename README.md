@@ -1,6 +1,6 @@
 # Space
 
-Comprehensive set of Sass mixins and utility classes for organizing space. Includes breakpoints, grid, and space patterns. [Inspired by Space in Design Systems](https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62) by Nathan Curtis.
+Comprehensive set of Sass mixins and utility classes for organizing space. Includes breakpoints, grid, and space patterns. Inspired by [Space in Design Systems](https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62) by Nathan Curtis.
 
 
 
