@@ -20,16 +20,13 @@ $SPACING_MAP: ();
 
   @for $i from 1 through length($levels) {
     $keyName: nth($levels, $i);
+    $keyValue: nth($levels, $i) * $SPACING_BASE;
+
     @if $keyName == 0.5 {
       $keyName: half;
     }
 
-    $tempMap: (
-      $keyName: nth($levels, $i) * $SPACING_BASE,
-    );
-
-    // This is similar to pushing values onto the stack
-    $map: map-merge($map, $tempMap);
+    $map: map-merge($map, ($keyName: $keyValue));
   }
 
   @return $map;
