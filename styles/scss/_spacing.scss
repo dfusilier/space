@@ -1,5 +1,17 @@
 
 /*
+ * VARIABLES
+ **/
+
+// Unit on which all spacing is based
+$SPACING_BASE: 4px !default;
+
+// Modular spacing scale
+$SPACING_LEVELS: (0, 0.5, 1, 2, 3, 4, 6, 8, 12, 16) !default;
+$SPACING_MAP: ();
+
+
+/*
  * INIT
  **/
 

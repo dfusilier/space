@@ -3,7 +3,7 @@
  * VARIABLES
  **/
 
-$GRID_COLUMNS: 12;
+$GRID_COLUMNS: 12 !default;
 
 $GRID_CONTAINERS: (
   xs: 360px,
@@ -11,7 +11,8 @@ $GRID_CONTAINERS: (
   md: 720px,
   lg: 960px,
   xl: 1140px
-);
+) !default;
+
 
  
 /*
