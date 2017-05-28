@@ -54,7 +54,7 @@
 }
 
 /* line 58, ../scss/_grid.scss */
-.col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-ld-1, .col-ld-2, .col-ld-3, .col-ld-4, .col-ld-5, .col-ld-6, .col-ld-7, .col-ld-8, .col-ld-9, .col-ld-10, .col-ld-11, .col-ld-12, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12 {
+.col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col-1-sm, .col-2-sm, .col-3-sm, .col-4-sm, .col-5-sm, .col-6-sm, .col-7-sm, .col-8-sm, .col-9-sm, .col-10-sm, .col-11-sm, .col-12-sm, .col-1-md, .col-2-md, .col-3-md, .col-4-md, .col-5-md, .col-6-md, .col-7-md, .col-8-md, .col-9-md, .col-10-md, .col-11-md, .col-12-md, .col-1-ld, .col-2-ld, .col-3-ld, .col-4-ld, .col-5-ld, .col-6-ld, .col-7-ld, .col-8-ld, .col-9-ld, .col-10-ld, .col-11-ld, .col-12-ld, .col-1-xl, .col-2-xl, .col-3-xl, .col-4-xl, .col-5-xl, .col-6-xl, .col-7-xl, .col-8-xl, .col-9-xl, .col-10-xl, .col-11-xl, .col-12-xl {
   position: relative;
   min-height: 1px;
   width: 100%;
@@ -140,292 +140,292 @@
 
 @media (min-width: 576px) {
   /* line 89, ../scss/_grid.scss */
-  .col-sm-1 {
+  .col-1-sm {
     flex: 0 0 8.33333%;
     max-width: 8.33333%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-sm-2 {
+  .col-2-sm {
     flex: 0 0 16.66667%;
     max-width: 16.66667%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-sm-3 {
+  .col-3-sm {
     flex: 0 0 25%;
     max-width: 25%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-sm-4 {
+  .col-4-sm {
     flex: 0 0 33.33333%;
     max-width: 33.33333%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-sm-5 {
+  .col-5-sm {
     flex: 0 0 41.66667%;
     max-width: 41.66667%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-sm-6 {
+  .col-6-sm {
     flex: 0 0 50%;
     max-width: 50%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-sm-7 {
+  .col-7-sm {
     flex: 0 0 58.33333%;
     max-width: 58.33333%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-sm-8 {
+  .col-8-sm {
     flex: 0 0 66.66667%;
     max-width: 66.66667%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-sm-9 {
+  .col-9-sm {
     flex: 0 0 75%;
     max-width: 75%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-sm-10 {
+  .col-10-sm {
     flex: 0 0 83.33333%;
     max-width: 83.33333%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-sm-11 {
+  .col-11-sm {
     flex: 0 0 91.66667%;
     max-width: 91.66667%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-sm-12 {
+  .col-12-sm {
     flex: 0 0 100%;
     max-width: 100%;
   }
 }
 @media (min-width: 768px) {
   /* line 89, ../scss/_grid.scss */
-  .col-md-1 {
+  .col-1-md {
     flex: 0 0 8.33333%;
     max-width: 8.33333%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-md-2 {
+  .col-2-md {
     flex: 0 0 16.66667%;
     max-width: 16.66667%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-md-3 {
+  .col-3-md {
     flex: 0 0 25%;
     max-width: 25%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-md-4 {
+  .col-4-md {
     flex: 0 0 33.33333%;
     max-width: 33.33333%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-md-5 {
+  .col-5-md {
     flex: 0 0 41.66667%;
     max-width: 41.66667%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-md-6 {
+  .col-6-md {
     flex: 0 0 50%;
     max-width: 50%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-md-7 {
+  .col-7-md {
     flex: 0 0 58.33333%;
     max-width: 58.33333%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-md-8 {
+  .col-8-md {
     flex: 0 0 66.66667%;
     max-width: 66.66667%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-md-9 {
+  .col-9-md {
     flex: 0 0 75%;
     max-width: 75%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-md-10 {
+  .col-10-md {
     flex: 0 0 83.33333%;
     max-width: 83.33333%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-md-11 {
+  .col-11-md {
     flex: 0 0 91.66667%;
     max-width: 91.66667%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-md-12 {
+  .col-12-md {
     flex: 0 0 100%;
     max-width: 100%;
   }
 }
 @media (min-width: 992px) {
   /* line 89, ../scss/_grid.scss */
-  .col-ld-1 {
+  .col-1-ld {
     flex: 0 0 8.33333%;
     max-width: 8.33333%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-ld-2 {
+  .col-2-ld {
     flex: 0 0 16.66667%;
     max-width: 16.66667%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-ld-3 {
+  .col-3-ld {
     flex: 0 0 25%;
     max-width: 25%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-ld-4 {
+  .col-4-ld {
     flex: 0 0 33.33333%;
     max-width: 33.33333%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-ld-5 {
+  .col-5-ld {
     flex: 0 0 41.66667%;
     max-width: 41.66667%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-ld-6 {
+  .col-6-ld {
     flex: 0 0 50%;
     max-width: 50%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-ld-7 {
+  .col-7-ld {
     flex: 0 0 58.33333%;
     max-width: 58.33333%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-ld-8 {
+  .col-8-ld {
     flex: 0 0 66.66667%;
     max-width: 66.66667%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-ld-9 {
+  .col-9-ld {
     flex: 0 0 75%;
     max-width: 75%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-ld-10 {
+  .col-10-ld {
     flex: 0 0 83.33333%;
     max-width: 83.33333%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-ld-11 {
+  .col-11-ld {
     flex: 0 0 91.66667%;
     max-width: 91.66667%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-ld-12 {
+  .col-12-ld {
     flex: 0 0 100%;
     max-width: 100%;
   }
 }
 @media (min-width: 1200px) {
   /* line 89, ../scss/_grid.scss */
-  .col-xl-1 {
+  .col-1-xl {
     flex: 0 0 8.33333%;
     max-width: 8.33333%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-xl-2 {
+  .col-2-xl {
     flex: 0 0 16.66667%;
     max-width: 16.66667%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-xl-3 {
+  .col-3-xl {
     flex: 0 0 25%;
     max-width: 25%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-xl-4 {
+  .col-4-xl {
     flex: 0 0 33.33333%;
     max-width: 33.33333%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-xl-5 {
+  .col-5-xl {
     flex: 0 0 41.66667%;
     max-width: 41.66667%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-xl-6 {
+  .col-6-xl {
     flex: 0 0 50%;
     max-width: 50%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-xl-7 {
+  .col-7-xl {
     flex: 0 0 58.33333%;
     max-width: 58.33333%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-xl-8 {
+  .col-8-xl {
     flex: 0 0 66.66667%;
     max-width: 66.66667%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-xl-9 {
+  .col-9-xl {
     flex: 0 0 75%;
     max-width: 75%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-xl-10 {
+  .col-10-xl {
     flex: 0 0 83.33333%;
     max-width: 83.33333%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-xl-11 {
+  .col-11-xl {
     flex: 0 0 91.66667%;
     max-width: 91.66667%;
   }
 
   /* line 89, ../scss/_grid.scss */
-  .col-xl-12 {
+  .col-12-xl {
     flex: 0 0 100%;
     max-width: 100%;
   }
@@ -443,6 +443,31 @@
 /* line 102, ../scss/_grid.scss */
 .align-bottom {
   align-items: flex-end;
+}
+
+/* line 104, ../scss/_grid.scss */
+.justify-left {
+  justify-content: flex-start;
+}
+
+/* line 105, ../scss/_grid.scss */
+.justify-right {
+  justify-content: flex-end;
+}
+
+/* line 106, ../scss/_grid.scss */
+.justify-center {
+  justify-content: center;
+}
+
+/* line 107, ../scss/_grid.scss */
+.justify-space-between {
+  justify-content: space-between;
+}
+
+/* line 108, ../scss/_grid.scss */
+.justify-space-around {
+  justify-content: space-around;
 }
 
 /*

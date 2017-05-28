@@ -78,7 +78,7 @@ $GRID_CONTAINERS: (
     // ~2kb. Must be done in separate loop because extend 
     // can only be used outside media queries.
     @for $i from 1 through $gridColumns { 
-      .col#{$breakpointSuffix}-#{$i} {
+      .col-#{$i}#{$breakpointSuffix} {
         @extend %col;
       };
     };
@@ -86,7 +86,7 @@ $GRID_CONTAINERS: (
     @include media-min($breakpointKey) {
       @for $i from 1 through $gridColumns { 
 
-        .col#{$breakpointSuffix}-#{$i} {
+        .col-#{$i}#{$breakpointSuffix} {
           @include make-col($i);
         };
 
@@ -100,4 +100,10 @@ $GRID_CONTAINERS: (
 .align-top    { align-items: flex-start; }
 .align-center { align-items: center; }
 .align-bottom { align-items: flex-end; }
+
+.justify-left           { justify-content: flex-start; }
+.justify-right          { justify-content: flex-end; }
+.justify-center         { justify-content: center; }
+.justify-space-between  { justify-content: space-between; }
+.justify-space-around   { justify-content: space-around; }
 

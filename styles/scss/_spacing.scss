@@ -179,5 +179,16 @@ $SPACING_MAP: make-spacing-map($levels: $SPACING_LEVELS);
   } 
 }
 
+.stack-0-last {
+  :last-child {
+    @include stack(0, $isImportant: true);
+  }
+}
+
+.inline-0-last {
+  :last-child {
+    @include inline(0, $isImportant: true);
+  
+
 
 
