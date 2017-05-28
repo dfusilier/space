@@ -2516,6 +2516,16 @@
   }
 }
 
+/* line 183, ../scss/_spacing.scss */
+.stack-0-last :last-child {
+  margin-bottom: 0px !important;
+}
+
+/* line 189, ../scss/_spacing.scss */
+.inline-0-last :last-child {
+  margin-right: 0px !important;
+}
+
 /* line 8, ../scss/guide.scss */
 body {
   color: rgba(0, 0, 0, 0.87);

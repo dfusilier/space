@@ -188,7 +188,8 @@ $SPACING_MAP: make-spacing-map($levels: $SPACING_LEVELS);
 .inline-0-last {
   :last-child {
     @include inline(0, $isImportant: true);
-  
+  }
+}
 
 
 
