@@ -27,7 +27,7 @@ $BREAKPOINTS: (
 
 // Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
 // Makes the @content apply to the given breakpoint and wider.
-@mixin media-min($breakpointName, $breakpoints: $BREAKPOINTS) {
+@mixin media-min($breakpointName) {
   $breakpoint: breakpoint($breakpointName);
   @if $breakpoint {
     @media (min-width: $breakpoint) {
