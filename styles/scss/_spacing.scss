@@ -11,6 +11,7 @@ $SPACING_LEVELS: (0, 0.5, 1, 2, 3, 4, 6, 8, 12, 16) !default;
 $SPACING_MAP: ();
 
 
+
 /*
  * INIT
  **/
@@ -35,6 +36,7 @@ $SPACING_MAP: ();
 $SPACING_MAP: make-spacing-map($levels: $SPACING_LEVELS);
 
 
+
 /*
  * CONVENIENCE FUNCTIONS
  **/
@@ -55,6 +57,7 @@ $SPACING_MAP: make-spacing-map($levels: $SPACING_LEVELS);
   // Otherwise return null
   @else { @return null; };  
 }
+
 
 
 /*
@@ -158,6 +161,26 @@ $SPACING_MAP: make-spacing-map($levels: $SPACING_LEVELS);
 
 @include make-spacing-utilities();
 
+.inset-bottom-0 {
+  padding-bottom: 0 !important;
+}
+
+.inset-top-0 {
+  padding-bottom: 0 !important;
+}
+
+.stack-0-last {
+  :last-child {
+    @include stack(0, $isImportant: true);
+  }
+}
+
+.inline-0-last {
+  :last-child {
+    @include inline(0, $isImportant: true);
+  }
+}
+
 .section {
   position: relative;
   padding-right: spacing-level(4) !important;
@@ -178,18 +201,5 @@ $SPACING_MAP: make-spacing-map($levels: $SPACING_LEVELS);
     margin-left:  -1 * spacing-level(8) !important;
   } 
 }
-
-.stack-0-last {
-  :last-child {
-    @include stack(0, $isImportant: true);
-  }
-}
-
-.inline-0-last {
-  :last-child {
-    @include inline(0, $isImportant: true);
-  }
-}
-
 
 
